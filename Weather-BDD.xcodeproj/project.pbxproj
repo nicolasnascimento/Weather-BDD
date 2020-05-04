@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		0CD8A50324605E6400B14412 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8A50224605E6400B14412 /* Main.swift */; };
 		0CD8A50E24605E6400B14412 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8A50D24605E6400B14412 /* Main.swift */; };
 		0CD8A52224607BF200B14412 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CD8A52124607BF200B14412 /* Default-568h@2x.png */; };
+		0CD8A52724609B1D00B14412 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A52624609B1D00B14412 /* Quick */; };
+		0CD8A52A24609B2E00B14412 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A52924609B2E00B14412 /* Nimble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD8A52724609B1D00B14412 /* Quick in Frameworks */,
+				0CD8A52A24609B2E00B14412 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +211,10 @@
 				0CD8A50024605E6400B14412 /* PBXTargetDependency */,
 			);
 			name = "Weather-BDDTests";
+			packageProductDependencies = (
+				0CD8A52624609B1D00B14412 /* Quick */,
+				0CD8A52924609B2E00B14412 /* Nimble */,
+			);
 			productName = "Weather-BDDTests";
 			productReference = 0CD8A4FE24605E6400B14412 /* Weather-BDDTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -261,6 +269,10 @@
 				Base,
 			);
 			mainGroup = 0CD8A4DF24605E6200B14412;
+			packageReferences = (
+				0CD8A52524609B1D00B14412 /* XCRemoteSwiftPackageReference "Quick" */,
+				0CD8A52824609B2E00B14412 /* XCRemoteSwiftPackageReference "Nimble" */,
+			);
 			productRefGroup = 0CD8A4E924605E6200B14412 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -476,7 +488,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Weather-BDD/Preview Content\"";
 				DEVELOPMENT_TEAM = U5ZZWN44AH;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Weather-BDD/Info.plist";
+				INFOPLIST_FILE = "Weather-BDD/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,7 +508,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Weather-BDD/Preview Content\"";
 				DEVELOPMENT_TEAM = U5ZZWN44AH;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Weather-BDD/Info.plist";
+				INFOPLIST_FILE = "Weather-BDD/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -632,6 +644,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0CD8A52524609B1D00B14412 /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		0CD8A52824609B2E00B14412 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0CD8A52624609B1D00B14412 /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CD8A52524609B1D00B14412 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		0CD8A52924609B2E00B14412 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CD8A52824609B2E00B14412 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0CD8A4E024605E6200B14412 /* Project object */;
 }
