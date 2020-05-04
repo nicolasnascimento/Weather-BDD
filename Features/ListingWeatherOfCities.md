@@ -42,9 +42,9 @@
 
     GIVEN   the App is loading weather info for my prefered cities
     AND     I am in the HomeScreen
-    AND     I am is not connected to the internet
+    AND     I am connected to the internet
     
-    WHEN    The app finishes loading
+    WHEN    The app finishes loading with an error
     
-    THEN    the App should provide a 'Connection error' to the user
-    AND     I should be in 
+    THEN    the App should provide a error message to the user
+    AND     I should be presented a Try again App
