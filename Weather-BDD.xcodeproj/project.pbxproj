@@ -19,6 +19,9 @@
 		0CD8A52724609B1D00B14412 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A52624609B1D00B14412 /* Quick */; };
 		0CD8A52A24609B2E00B14412 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A52924609B2E00B14412 /* Nimble */; };
 		0CD8A52C24609BB100B14412 /* ListingWeatherOfCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8A52B24609BB100B14412 /* ListingWeatherOfCities.swift */; };
+		0CD8A53C2460B02A00B14412 /* ListingWeatherOfCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8A53B2460B02A00B14412 /* ListingWeatherOfCities.swift */; };
+		0CD8A5432460B0A200B14412 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A5422460B0A200B14412 /* Quick */; };
+		0CD8A5452460B0A200B14412 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A5442460B0A200B14412 /* Nimble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +57,9 @@
 		0CD8A50D24605E6400B14412 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		0CD8A50F24605E6400B14412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD8A52124607BF200B14412 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		0CD8A5242460881700B14412 /* ListingWeatherOfCities.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ListingWeatherOfCities.md; sourceTree = "<group>"; };
+		0CD8A5242460881700B14412 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0CD8A52B24609BB100B14412 /* ListingWeatherOfCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingWeatherOfCities.swift; sourceTree = "<group>"; };
+		0CD8A53B2460B02A00B14412 /* ListingWeatherOfCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingWeatherOfCities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD8A5432460B0A200B14412 /* Quick in Frameworks */,
+				0CD8A5452460B0A200B14412 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,11 +94,12 @@
 		0CD8A4DF24605E6200B14412 = {
 			isa = PBXGroup;
 			children = (
-				0CD8A51E24607A1700B14412 /* Features */,
+				0CD8A5242460881700B14412 /* README.md */,
 				0CD8A4EA24605E6200B14412 /* Weather-BDD */,
 				0CD8A50124605E6400B14412 /* Weather-BDDTests */,
 				0CD8A50C24605E6400B14412 /* Weather-BDDUITests */,
 				0CD8A4E924605E6200B14412 /* Products */,
+				0CD8A53D2460B09B00B14412 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +145,7 @@
 		0CD8A50C24605E6400B14412 /* Weather-BDDUITests */ = {
 			isa = PBXGroup;
 			children = (
+				0CD8A53B2460B02A00B14412 /* ListingWeatherOfCities.swift */,
 				0CD8A50D24605E6400B14412 /* Main.swift */,
 				0CD8A50F24605E6400B14412 /* Info.plist */,
 			);
@@ -172,12 +180,11 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0CD8A51E24607A1700B14412 /* Features */ = {
+		0CD8A53D2460B09B00B14412 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0CD8A5242460881700B14412 /* ListingWeatherOfCities.md */,
 			);
-			path = Features;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +243,10 @@
 				0CD8A50B24605E6400B14412 /* PBXTargetDependency */,
 			);
 			name = "Weather-BDDUITests";
+			packageProductDependencies = (
+				0CD8A5422460B0A200B14412 /* Quick */,
+				0CD8A5442460B0A200B14412 /* Nimble */,
+			);
 			productName = "Weather-BDDUITests";
 			productReference = 0CD8A50924605E6400B14412 /* Weather-BDDUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -340,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD8A50E24605E6400B14412 /* Main.swift in Sources */,
+				0CD8A53C2460B02A00B14412 /* ListingWeatherOfCities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +687,16 @@
 			productName = Quick;
 		};
 		0CD8A52924609B2E00B14412 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CD8A52824609B2E00B14412 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+		0CD8A5422460B0A200B14412 /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CD8A52524609B1D00B14412 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		0CD8A5442460B0A200B14412 /* Nimble */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0CD8A52824609B2E00B14412 /* XCRemoteSwiftPackageReference "Nimble" */;
 			productName = Nimble;
