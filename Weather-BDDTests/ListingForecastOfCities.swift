@@ -9,6 +9,7 @@
 import Foundation
 import Quick
 import Nimble
+import Combine
 @testable import Weather_BDD
 
 final class ListingForecastOfCities: QuickSpec {
@@ -28,13 +29,13 @@ final class ListingForecastOfCities: QuickSpec {
                                                    currentTemp: 20.0, minTemp: 15.0, maxTemp: 25.0)
                         let poaForecast = Forecast(cityName: "Porto Alegre", currentForecast: "Cloudy",
                                                    currentTemp: 15.0, minTemp: 10.0, maxTemp: 20.0)
-                        let cities = [sfoForecast, poaForecast]
+                        let forecasts = [sfoForecast, poaForecast]
                         
                         // Mock Provider
-                        let provider = MockForecastProvider(cities: cities)
+                        let provider = MockForecastProvider(forecasts: forecasts)
                         
                         // Interactor
-                        let interactor = CityLoadingInteractor(forecastProvider: forecastProvider)
+                        var interactor = ForecastLoadingInteractor(forecastProvider: provider)
                         
                         // Since we will be using a state-based architecture, create the initial state
                         var appState = AppState(status: .loadingForecast)
@@ -46,8 +47,13 @@ final class ListingForecastOfCities: QuickSpec {
                                 WHEN    loading finishes successfully
                                 """) {
                                     
-                                    // The assign operator forwards the output for
-                                    let _ = interactorPB.assign(to: \.cities, on: appState)
+                                    // Use the sink operator to complete load
+                                    _ = interactorPB
+                                        .sink(receiveCompletion: {
+                                            if case .failure(let error) = $0 {
+                                                fail("Op. should not fail: \(error)")
+                                            }
+                                        }) { appState.forecasts = $0 }
                                     
                                     it( """
                                         THEN    there should be two cities loaded, SFO and POA
@@ -56,15 +62,26 @@ final class ListingForecastOfCities: QuickSpec {
                                         AND     it should be 20º, "Sunny", with a min-max of 15º and 25º
                                         """) {
                                             
-                                            expect(appState.cities.count).toEventually(equal(2))
-                                            expect(appState.cities).toEventually(contain([sfoForecast, poaForecast]))
-                                            expect(appState.cities).toEventually(equal(cities.sorted{ $0.cityName < $1.cityName }))
+                                            // Check number of cities
+                                            expect(appState.forecasts.count).toEventually(equal(2))
+                                            
+                                            // Check all parameters are correct, using the equality comparision
+                                            expect(appState.forecasts).toEventually(contain([sfoForecast, poaForecast]))
+                                            
+                                            // Check if order of elements is correct
+                                            expect(appState.forecasts).toEventually(equal(forecasts.sorted{ $0.cityName < $1.cityName }))
                                     }
-                                    
                         }
             }
-            
         }
+    }
+}
+
+struct MockForecastProvider: ForecastProvider {
+    var forecasts: [Forecast]
+    
+    func getForecasts() -> AnyPublisher<[Forecast], Error> {
+        Future<[Forecast], Error> { $0(.success(self.forecasts)) }.eraseToAnyPublisher()
     }
 }
 

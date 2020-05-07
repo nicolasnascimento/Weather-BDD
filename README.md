@@ -1,6 +1,6 @@
 # Weather - BDD
 
-An example iOS application written as an example of the proposed workflow
+An example iOS application written as an example of the proposed workflow.
 
 # Features
 
@@ -19,20 +19,3 @@ An example iOS application written as an example of the proposed workflow
     AND     the cities should be in alphabetic order
     AND     it should be 15º, "Cloudy", with a min-max of 10º and 20º
     AND     it should be 20º, "Sunny", with a min-max of 15º and 25º
-    
-### Scenario 2 - Failed to load weather
-
-    GIVEN   the App is loading weather info for my prefered cities
-    AND     I am in the HomeScreen
-    AND     I am connected to the internet
-    
-    WHEN    The app finishes loading with an error
-    
-    THEN    the App should provide a error message to the user
-    AND     I should be presented a Try again App
-    
-### Scenario 3 - Launching App
-    GIVEN   the App is not open
-    WHEN    I open the App
-    THEN    I should be in the HomeScreen
-    AND     the App should have started to load weather info for my prefered cities
