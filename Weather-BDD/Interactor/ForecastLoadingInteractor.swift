@@ -9,12 +9,12 @@
 import Foundation
 import Combine
 
-struct ForecastLoadingInteractor {
-    var forecastProvider: ForecastProvider
-}
-
 protocol ForecastProvider {
     func getForecasts() -> AnyPublisher<[Forecast], Error>
+}
+
+struct ForecastLoadingInteractor {
+    var forecastProvider: ForecastProvider
 }
 
 extension ForecastLoadingInteractor {
@@ -24,6 +24,9 @@ extension ForecastLoadingInteractor {
             .map{ $0.sorted{ $0.cityName < $1.cityName } }
             .eraseToAnyPublisher()
     }
+}
+
+extension ForecastLoadingInteractor {
     enum Action {
         case load
     }
