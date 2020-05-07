@@ -1,6 +1,6 @@
 # Weather - BDD
 
-An example iOS application written as an example of the proposed workflow.
+An iOS application written as an example of the proposed workflow.
 
 # Features
 
