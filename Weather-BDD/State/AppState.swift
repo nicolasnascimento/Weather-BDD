@@ -11,6 +11,7 @@ import Foundation
 struct AppState {
     enum Status {
         case loadingForecast
+        case loadedForecasts
     }
     var status: Status
     var forecasts: [Forecast] = []

@@ -35,7 +35,7 @@ final class ListingForecastOfCities: QuickSpec {
                         let provider = MockForecastProvider(forecasts: forecasts)
                         
                         // Interactor
-                        var interactor = ForecastLoadingInteractor(forecastProvider: provider)
+                        let interactor = ForecastLoadingInteractor(forecastProvider: provider)
                         
                         // Since we will be using a state-based architecture, create the initial state
                         var appState = AppState(status: .loadingForecast)
@@ -53,7 +53,10 @@ final class ListingForecastOfCities: QuickSpec {
                                             if case .failure(let error) = $0 {
                                                 fail("Op. should not fail: \(error)")
                                             }
-                                        }) { appState.forecasts = $0 }
+                                        }) {
+                                            appState.forecasts = $0
+                                            appState.status = .loadedForecasts
+                                        }
                                     
                                     it( """
                                         THEN    there should be two cities loaded, SFO and POA
@@ -61,6 +64,9 @@ final class ListingForecastOfCities: QuickSpec {
                                         AND     it should be 15º, "Cloudy", with a min-max of 10º and 20º
                                         AND     it should be 20º, "Sunny", with a min-max of 15º and 25º
                                         """) {
+                                            
+                                            // Check state
+                                            expect(appState.status).to(equal(.loadedForecasts))
                                             
                                             // Check number of cities
                                             expect(appState.forecasts.count).toEventually(equal(2))
