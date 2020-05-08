@@ -25,7 +25,7 @@
 		0CD8A53C2460B02A00B14412 /* ListingWeatherOfCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8A53B2460B02A00B14412 /* ListingWeatherOfCities.swift */; };
 		0CD8A5432460B0A200B14412 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A5422460B0A200B14412 /* Quick */; };
 		0CD8A5452460B0A200B14412 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD8A5442460B0A200B14412 /* Nimble */; };
-		0CDD39F32465E29100C7E603 /* OpenWatherForecastProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD39F22465E29100C7E603 /* OpenWatherForecastProviderTests.swift */; };
+		0CDD39F32465E29100C7E603 /* OpenWeatherForecastProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD39F22465E29100C7E603 /* OpenWeatherForecastProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,7 @@
 		0CD8A5242460881700B14412 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0CD8A52B24609BB100B14412 /* ListingForecastOfCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingForecastOfCities.swift; sourceTree = "<group>"; };
 		0CD8A53B2460B02A00B14412 /* ListingWeatherOfCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingWeatherOfCities.swift; sourceTree = "<group>"; };
-		0CDD39F22465E29100C7E603 /* OpenWatherForecastProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWatherForecastProviderTests.swift; sourceTree = "<group>"; };
+		0CDD39F22465E29100C7E603 /* OpenWeatherForecastProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherForecastProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +170,7 @@
 		0CD8A50124605E6400B14412 /* Weather-BDDTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CDD39F22465E29100C7E603 /* OpenWatherForecastProviderTests.swift */,
+				0CDD39F22465E29100C7E603 /* OpenWeatherForecastProviderTests.swift */,
 				0CD8A52B24609BB100B14412 /* ListingForecastOfCities.swift */,
 				0CD8A50224605E6400B14412 /* Main.swift */,
 				0CD8A50424605E6400B14412 /* Info.plist */,
@@ -380,7 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CDD39F32465E29100C7E603 /* OpenWatherForecastProviderTests.swift in Sources */,
+				0CDD39F32465E29100C7E603 /* OpenWeatherForecastProviderTests.swift in Sources */,
 				0CD8A50324605E6400B14412 /* Main.swift in Sources */,
 				0CD8A52C24609BB100B14412 /* ListingForecastOfCities.swift in Sources */,
 			);
