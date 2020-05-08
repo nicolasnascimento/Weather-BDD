@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import Quick
+import Nimble
+import Combine
+@testable import Weather_BDD
 
 final class OpenWatherForecastProviderTests: QuickSpec {
 }
