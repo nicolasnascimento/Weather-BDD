@@ -16,7 +16,33 @@ final class OpenWeatherForecastProviderTests: QuickSpec {
     
     override func spec() {
         describe("OpenWeatherForecastProvider") {
-            context("performing a successfull request") {
+            context("performing a successfull no-city request") {
+                it("should fail") {
+                    // Arrange
+                    let apiKey = "YOUR_API_KEY"
+                    let sessionProvider = MockSessionProvider()
+                    let provider: ForecastProvider = OpenWeatherForecastProvider(sessionProvider: sessionProvider,
+                                                                                 apiKey: apiKey,
+                                                                                 cityNames: [])
+                    var forecasts: [Forecast] = []
+                    var success: Bool = false
+                    // Act
+                    _ = provider
+                        .getForecasts()
+                        .sink(receiveCompletion: {
+                            if case .finished = $0 {
+                                fail("Op should not succeed ")
+                            } else {
+                                success = true
+                            }
+                        }) { forecasts = $0 }
+                        
+                    // Assert
+                    expect(forecasts).toEventually(beEmpty())
+                    expect(success).toEventually(beTrue())
+                }
+            }
+            context("performing a successfull single-city request") {
                 it("should decode Forecast objects apropriately") {
                     // Arrange
                     let apiKey = "YOUR_API_KEY"
@@ -42,7 +68,35 @@ final class OpenWeatherForecastProviderTests: QuickSpec {
                     expect(forecasts).toEventually(equal([expectedForecast]))
                 }
             }
+            context("performing a successfull two-city request") {
+                it("should decode Forecast objects apropriately") {
+                    // Arrange
+                    let apiKey = "YOUR_API_KEY"
+                    let cityName = "London"
+                    let sessionProvider = MockSessionProvider()
+                    let provider: ForecastProvider = OpenWeatherForecastProvider(sessionProvider: sessionProvider,
+                                                                                 apiKey: apiKey,
+                                                                                 cityNames: [cityName, cityName])
+                    var forecasts: [Forecast] = []
+                    
+                    // Act
+                    _ = provider
+                        .getForecasts()
+                        .sink(receiveCompletion: {
+                            if case .failure(let error) = $0 {
+                                fail("Op should not fail \(error)")
+                            }
+                        }) { forecasts = $0 }
+                        
+                    // Assert
+                    let expectedForecast = Forecast(cityName: "London", currentForecast: "Drizzle",
+                                                    currentTemp: 7.17, minTemp: 6.00, maxTemp: 8.00)
+                    expect(forecasts).toEventually(equal([expectedForecast, expectedForecast]))
+                }
+            }
         }
+        
+        
     }
 }
 
