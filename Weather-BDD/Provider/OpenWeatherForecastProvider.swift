@@ -29,6 +29,16 @@ extension URLSession: SessionProvider {
 }
 
 
+extension Forecast {
+    init(_ response: OpenWeatherForecastProvider.Response) {
+        self.cityName = response.name ?? "No Name"
+        self.currentForecast =  response.weather?.first?.main ?? "No Temp"
+        self.currentTemp = (response.main?.temp ?? 0.0) - 273.15
+        self.minTemp = (response.main?.tempMin ?? 0.0) - 273.15
+        self.maxTemp = (response.main?.tempMax ?? 0.0) - 273.15
+    }
+}
+
 extension OpenWeatherForecastProvider: ForecastProvider {
     func getForecasts() -> AnyPublisher<[Forecast], Error> {
         if cityNames.isEmpty {
@@ -51,11 +61,7 @@ extension OpenWeatherForecastProvider: ForecastProvider {
         let publisherAtIndex = sessionProvider
             .data(for: url)
             .decode(type: Response.self, decoder: JSONDecoder())
-            .map{ [Forecast(cityName: $0.name,
-                            currentForecast: $0.weather.first?.main ?? "No Temp",
-                           currentTemp: $0.main.temp - 273.15,
-                           minTemp: $0.main.tempMin - 273.15,
-                           maxTemp: $0.main.tempMax - 273.15)] }
+            .map{ [Forecast($0)] }
             .eraseToAnyPublisher()
         
         // If we're the latest query, finish
@@ -75,11 +81,11 @@ extension OpenWeatherForecastProvider: ForecastProvider {
         struct Weather: Codable {
             let main: String
         }
-        let weather: [Weather]
+        var weather: [Weather]?
         struct Main: Codable {
-            let temp: Double
-            let tempMin: Double
-            let tempMax: Double
+            var temp: Double?
+            var tempMin: Double?
+            var tempMax: Double?
             
             enum CodingKeys: String, CodingKey {
                 case temp
@@ -87,8 +93,8 @@ extension OpenWeatherForecastProvider: ForecastProvider {
                 case tempMax = "temp_max"
             }
         }
-        let main: Main
-        let name: String
+        var main: Main?
+        var name: String?
     }
     
     enum Errors: Error {
