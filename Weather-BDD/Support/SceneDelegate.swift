@@ -29,8 +29,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Perform the request only if we are not testing
         if CommandLine.arguments.contains("--UITESTING") {
             let testingForecasts: [Forecast] = [
+                .init(cityName: "San Francisco", currentForecast: "Sunny", currentTemp: 20, minTemp: 15, maxTemp: 25),
                 .init(cityName: "Porto Alegre", currentForecast: "Cloudy", currentTemp: 15, minTemp: 10, maxTemp: 20),
-                .init(cityName: "San Francisco", currentForecast: "Sunny", currentTemp: 20, minTemp: 15, maxTemp: 25)
             ]
             self.state.forecasts = testingForecasts
             
@@ -40,6 +40,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 .receive(on: RunLoop.main)
                 .sink(receiveCompletion: { _ in } ) { self.state.forecasts = $0 }
         }
+        
         
         // Share AppState among SwiftUI Views
         let contentView = ContentView()
