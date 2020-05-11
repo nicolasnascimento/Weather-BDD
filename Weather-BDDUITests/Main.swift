@@ -8,6 +8,6 @@
 
 import XCTest
 
-final class Weather_BDDUITests: XCTestCase {
-    
+final class Weather_BDDUITests: XCTest {
+
 }
