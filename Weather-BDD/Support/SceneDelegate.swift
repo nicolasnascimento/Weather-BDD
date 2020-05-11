@@ -30,6 +30,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.cancellable = interactor
             .perform(action: .load, in: state)
+            .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in } ) { self.state.forecasts = $0 }
         
         let contentView = ContentView()
@@ -43,6 +44,5 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
     }
-
 }
 
