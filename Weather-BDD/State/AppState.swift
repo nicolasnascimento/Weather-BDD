@@ -8,12 +8,17 @@
 
 import Foundation
 
-struct AppState {
+final class AppState: ObservableObject {
     enum Status {
         case loadingForecast
         case loadedForecasts
     }
-    var status: Status
-    var forecasts: [Forecast] = []
+    @Published var status: Status
+    @Published var forecasts: [Forecast]
+    
+    init(status: Status, forecasts: [Forecast] = []) {
+        self.status = status
+        self.forecasts = forecasts
+    }
 }
 
