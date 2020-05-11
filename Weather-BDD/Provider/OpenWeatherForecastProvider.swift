@@ -51,7 +51,7 @@ extension OpenWeatherForecastProvider: ForecastProvider {
         
         // Build URL
         // Example: api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY
-        let baseUrlString = "api.openweathermap.org/data/2.5/weather"
+        let baseUrlString = "https://api.openweathermap.org/data/2.5/weather"
         guard var components = URLComponents(string: baseUrlString) else { fatalError() }
         components.queryItems = [URLQueryItem(name: "q", value: cityNames[index]),
                                  URLQueryItem(name: "appid", value: apiKey)]
